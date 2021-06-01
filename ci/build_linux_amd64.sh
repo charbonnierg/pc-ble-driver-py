@@ -18,10 +18,12 @@ export PATH="$VCPKG_ROOT:$PATH"
 git clone https://github.com/NordicPlayground/vcpkg-overlay-ports-public.git \
     && vcpkg install --overlay-ports=vcpkg-overlay-ports-public/ports/nrf-ble-driver nrf-ble-driver
 
+export PIP_INDEX_URL="https://pypi.org/simple"
+
 # Create virtual environment if it does not exist yet
 if [ ! -d ".venv/" ]; then
   echo -e "Creating virtual environment in $ROOT/.venv directory"
-  $PYTHON -m venv .venv
+  python3 -m venv .venv
   .venv/bin/python -m pip install -U wheel pip
 fi
 
