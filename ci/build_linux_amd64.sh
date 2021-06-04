@@ -31,4 +31,4 @@ echo -e "Installing development dependencies"
 .venv/bin/python -m pip install -r requirements-dev.txt
 
 echo -e "Building wheel"
-.venv/bin/python .py setup.py bdist_wheel --build-type Release
+.venv/bin/python setup.py bdist_wheel --build-type Release
