@@ -2065,6 +2065,13 @@ class BLEDriver(object):
         return opt.from_c()
 
     @wrapt.synchronized(api_lock)
+    def ble_opt_set(self, opt_id, opt):
+        assert isinstance(opt, BLEOptBase)
+        if isinstance(opt_id, BLEOpts):
+            opt_id = opt_id.value
+        return driver.sd_ble_opt_set(self.rpc_adapter, opt_id, opt.to_c())
+
+    @wrapt.synchronized(api_lock)
     @classmethod
     def enum_serial_ports(cls):
         MAX_SERIAL_PORTS = 64
